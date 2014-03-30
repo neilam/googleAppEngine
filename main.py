@@ -6,9 +6,10 @@ def checkText(inp):
         output=""
         for word in array:
             tempword=word
-            for newWord in WORDLIST:
+            for newWord in WORDLIST:                
                 if word.find(newWord) >=0:
-                    tempword=tempword[0:tempword.find(newWord)]+tempword[tempword.find(newWord)+len(newWord):]
+                    while (tempword.find(newWord) >= 0):
+                        tempword=tempword[0:tempword.find(newWord)]+tempword[tempword.find(newWord)+len(newWord):]
             if tempword=='':
                 l=len(word)
                 temp=""
@@ -19,7 +20,7 @@ def checkText(inp):
                 output+=temp+" "
             else:
                 output+=tempword+" "
-        return output
+        return output               
 
 class MainHandler(webapp2.RequestHandler):
 
